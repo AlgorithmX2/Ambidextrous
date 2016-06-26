@@ -1,0 +1,16 @@
+[
+{
+  "modid": "ambidextrous",
+  "name": "Ambidextrous",
+  "description": "a mod about using two keybinds for each hand.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "http://minecraft.curseforge.com/projects/ambidextrous",
+  "updateUrl": "",
+  "authorList": ["AlgorithmX2"],
+  "credits": "AlgorithmX2",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

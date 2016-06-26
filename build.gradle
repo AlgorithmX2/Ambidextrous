@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+group= "mod.ambidextrous"
+archivesBaseName = "ambidextrous"
+
+minecraft {
+    version = "${mc_version}-${forge_version}"
+    runDir = "eclipse"
+    mappings = "snapshot_20160518"
+    replaceIn "Ambidextrous.java"
+    replace "@VERSION@", project.version
+}
+
+jar {
+	manifest {
+		attributes 'FMLAT': 'ambidextrous_at.cfg'
+	}
+}
+
+processResources
+{
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+    
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+    
+    // Move access transformers to META-INF
+    rename '(.+_at.cfg)', 'META-INF/$1'
+}
