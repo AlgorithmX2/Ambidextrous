@@ -5,8 +5,10 @@ import java.util.WeakHashMap;
 import mod.ambidextrous.network.NetworkRouter;
 import mod.ambidextrous.network.packets.PacketSuppressInteraction;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EventPlayerInteract
@@ -56,6 +58,15 @@ public class EventPlayerInteract
 			final PlayerInteractEvent.RightClickBlock e )
 	{
 		handleClick( e );
+
+		if ( !e.isCanceled() )
+		{
+			final ItemStack s = e.getItemStack();
+			if ( s == null || s.getItem().doesSneakBypassUse( s, e.getWorld(), e.getPos(), e.getEntityPlayer() ) )
+			{
+				e.setUseBlock( Result.ALLOW );
+			}
+		}
 	}
 
 	private void handleClick(

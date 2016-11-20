@@ -11,14 +11,14 @@ import net.minecraftforge.fml.relauncher.Side;
 		name = Ambidextrous.MODNAME,
 		modid = Ambidextrous.MODID,
 		version = Ambidextrous.VERSION,
-		acceptedMinecraftVersions = "[1.11,1.12)",
+		acceptedMinecraftVersions = "[1.9.4,1.12)",
 		dependencies = Ambidextrous.DEPENDENCIES )
 public class Ambidextrous
 {
 	public static final String MODNAME = "Ambidextrous";
 	public static final String MODID = "ambidextrous";
 	public static final String VERSION = "@VERSION@";
-	public static final String DEPENDENCIES = "required-after:Forge@[12.17.0.1909,)";
+	public static final String DEPENDENCIES = "after:Forge@[12.17.0.1909,)";
 
 	@EventHandler
 	public void preinit(

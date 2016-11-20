@@ -28,6 +28,14 @@ jar {
 	manifest {
 		attributes 'FMLAT': 'ambidextrous_at.cfg'
 	}
+	
+	// make a lowercase copy of localization for 1.11, and keep the case for 1.9/1.10
+	from(sourceSets.main.resources.srcDirs) {
+		include '**/*.lang'
+		rename { String fileName ->
+			fileName.substring(0,3) + fileName.substring(3,5).toUpperCase() + fileName.substring(5)
+		}
+	}
 }
 
 processResources
