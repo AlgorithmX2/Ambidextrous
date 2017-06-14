@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.Side;
 		name = Ambidextrous.MODNAME,
 		modid = Ambidextrous.MODID,
 		version = Ambidextrous.VERSION,
-		acceptedMinecraftVersions = "[1.9.4,1.12)",
+		acceptedMinecraftVersions = "[1.9.4,1.13)",
 		dependencies = Ambidextrous.DEPENDENCIES )
 public class Ambidextrous
 {
